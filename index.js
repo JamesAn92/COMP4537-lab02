@@ -4,7 +4,7 @@ const multer = require('multer');
 const path = require('path');
 var cors = require('cors');
 const app = express();
-
+import fetch from 'node-fetch';
 
 app.use(cors());
 const PORT = 3000 || process.env.PORT;
@@ -61,7 +61,7 @@ app.post('/chatbot', (req, res) => {
 
 app.get('/', (req, res) => {
 	res.set('Content-Type', 'text/html');
-	res.sendFile(path.join(__dirname, '/myPage.html'));
+	res.sendFile(path.join(__dirname, '/index.html'));
 });
 
 // const PORT = 3000;
