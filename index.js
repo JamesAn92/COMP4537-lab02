@@ -14,7 +14,7 @@ app.listen(PORT, () => {
 app.use(bodyParser.json()); ///// prob here apparently
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.post('/chatbot', (req, res) => {
+app.post('/', (req, res) => {
 	const message = req.body.message;
 
     
