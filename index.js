@@ -16,7 +16,7 @@ app.listen(PORT, () => {
 app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.post('/', (req, res) => {
+app.post('/chatbot', (req, res) => {
 	res.set('Content-Type', 'application/javascript');
 	const message = req.body.message;    
 	const number = message.match(/\d+/);
