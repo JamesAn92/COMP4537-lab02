@@ -10,18 +10,17 @@ app.use(cors());
 // set port to 3000 and listen
 const PORT = 3000 || process.env.PORT;
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+	console.log(`Server running on port ${PORT}`);
 });
 
-app.use(bodyParser.json()); 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post('/chatbot', (req, res) => {
-	const message = req.body.message;    
+app.post('/', (req, res) => {
+	const message = req.body.message;
 	const number = message.match(/\d+/);
 	if (number) {
-		(async () => {
-			await fetch(`http://numbersapi.com/${number}?type=trivia`).then(response => response.text()).then(data => {
+		fetch(`http://numbersapi.com/${number}?type=trivia`).then(response => response.text()).then(data => {
 			res.json({
 				text: data
 			});
@@ -30,8 +29,6 @@ app.post('/chatbot', (req, res) => {
 				text: "Sorry, I couldn't find any information about that number."
 			});
 		});
-		})
-		
 	} else {
 		res.json({
 			text: "I'm sorry, I didn't understand your question. Please provide a number for me to give you information about."
